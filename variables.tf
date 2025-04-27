@@ -3,17 +3,25 @@ variable "aws_region" {
 }
 
 variable "vpc_cidr" {
-  default = "10.0.0.0/16"
+  default = "10.100.0.0/16"
 }
 
-variable "subnet_cidr" {
-  default = "10.0.1.0/24"
+variable "vpc_name" {
+  default = "company-main-vpc"
 }
 
-variable "instance_type" {
-  default = "t2.micro"
+variable "public_subnet_1_cidr" {
+  default = "10.100.1.0/24"
 }
 
-variable "ami_id" {
-  description = "Amazon Linux 2 AMI ID for your region"
+variable "public_subnet_2_cidr" {
+  default = "10.100.2.0/24"
+}
+
+variable "az1" {
+  default = "us-east-1a"
+}
+
+variable "az2" {
+  default = "us-east-1b"
 }

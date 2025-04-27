@@ -1,19 +1,19 @@
-resource "aws_vpc" "main_vpc" {
-  cidr_block = var.vpc_cidr
+provider "aws" {
+  region = var.aws_region
 }
 
-resource "aws_subnet" "main_subnet" {
-  vpc_id            = aws_vpc.main_vpc.id
-  cidr_block        = var.subnet_cidr
-  availability_zone = "${var.aws_region}a"
+module "vpc" {
+  source    = "./modules/vpc"
+  vpc_cidr  = var.vpc_cidr
+  vpc_name  = var.vpc_name
 }
 
-resource "aws_instance" "web_server" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  subnet_id     = aws_subnet.main_subnet.id
-
-  tags = {
-    Name = "BasicWebServer"
-  }
+module "subnet" {
+  source               = "./modules/subnet"
+  vpc_id               = module.vpc.vpc_id
+  vpc_name             = var.vpc_name
+  public_subnet_1_cidr = var.public_subnet_1_cidr
+  public_subnet_2_cidr = var.public_subnet_2_cidr
+  az1                  = var.az1
+  az2                  = var.az2
 }
