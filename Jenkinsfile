@@ -1,8 +1,8 @@
 pipeline {
     agent any
 
-    tools {
-        terraform 'terraform'
+    environment {
+        PATH = "/opt/homebrew/bin:$PATH"
     }
 
     stages {
