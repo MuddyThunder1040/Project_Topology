@@ -17,3 +17,8 @@ module "subnet" {
   az1                  = var.az1
   az2                  = var.az2
 }
+module "igw" {
+  source    = "./modules/igw"
+  vpc_id    = module.vpc.vpc_id
+  igw_name  = "Project-IGW"
+}
