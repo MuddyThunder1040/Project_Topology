@@ -44,10 +44,10 @@ pipeline {
             }
         }
     }
-
+  
     post {
         success {
-            echo '✅ Terraform Build and Apply Successful!'
+            echo '✅ -Terraform Build and Apply Successful!'
         }
         failure {
             echo '❌ Terraform Build Failed.'
