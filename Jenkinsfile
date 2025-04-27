@@ -1,8 +1,8 @@
 pipeline {
     agent any
 
-    environment {
-        TF_VAR_aws_region = 'us-east-2'
+    tools {
+        terraform 'terraform'
     }
 
     stages {
@@ -21,18 +21,7 @@ pipeline {
                 sh 'terraform plan'
             }
         }
-        stage('Manual Approval') {
-            when {
-                branch 'main'
-            }
-            steps {
-                input message: 'Approve to Apply?'
-            }
-        }
         stage('Terraform Apply') {
-            when {
-                branch 'main'
-            }
             steps {
                 sh 'terraform apply -auto-approve'
             }
