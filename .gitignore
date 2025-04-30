@@ -1,0 +1,24 @@
+# Terraform specific
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+*.tfplan
+crash.log
+
+# Ignore environment-specific variables
+terraform.tfvars
+*.tfvars
+
+# Editor & OS specific
+.DS_Store
+*.swp
+*.bak
+*.tmp
+
+# Jenkins
+*.log
+workspace/
+builds/
+lastStable*
+lastSuccessful*
